@@ -1,0 +1,39 @@
+<div class="card cardc" ng-controller="quizCtrl">
+        <div class="card-img-top">
+                <figure class="card__photo-container">
+                        <img ng-src="photos/{{person.photo}}" class="card__photo" ng-class="{'card__photo--policeman': person.photo === 'zhenyapolice.jpg'}">
+                    </figure>
+        </div>
+        <div class="card-body">
+                <h5 class="card-title">{{person.name}}</h5>
+                <div class="questions container">
+                        <div ng-repeat="question in person.questions" class="question-container">
+                                <button type="button" class="btn" ng-class="{'btn-success': selected, 'btn-warning': !selected}" ng-click="selected = !selected" data-toggle="modal" data-target="#exampleModalCenter">{{question.score}}</button>
+                            
+                                      
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLongTitle">{{question.text}}</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ol>
+                                                    <li ng-repeat="variant in question.variants">
+                                                        {{variant}}
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                        </div>
+                </div>
+        </div>
+    
+    
+</div>
